@@ -4,10 +4,14 @@ import './App.css';
 let initialState = [
   {
     id: 1,
+    prioridade: "baixa",
+    titulo: "titulo",
     descricao: 'Primeira Atividade'
   },
   {
     id: 2,
+    prioridade: "baixa",
+    titulo: "titulo",
     descricao: 'Segunda Atividade'
   },
 ];
@@ -20,6 +24,8 @@ function App() {
 
       const atividade = {
         id: document.getElementById('id').value,
+        prioridade: document.getElementById('prioridade').value,
+        titulo: document.getElementById('titulo').value,
         descricao: document.getElementById('descricao').value,
       };
 
@@ -32,11 +38,24 @@ function App() {
     <>
       <form className="row g-3">
         <div className="col-md-6">
-          <label for="inputEmail4" className="form-label">Id</label>
+          <label className="form-label">Id</label>
           <input id="id" type="text" className="form-control" />
         </div> 
         <div className="col-md-6">
-          <label for="inputEmail4" className="form-label">Descrição</label>
+          <label id="form-label">Prioridade</label>
+          <select id="prioridade" className="form-select">
+            <option defaultValue="0">Selecione</option>
+            <option value="1">Baixa</option>
+            <option value="2">Normal</option>
+            <option value="3">Alta</option>
+          </select>
+        </div>
+        <div className="col-md-6">
+          <label className="form-label">Título</label>
+          <input id="titulo" type="text" className="form-control" />
+        </div>
+        <div className="col-md-6">
+          <label className="form-label">Descrição</label>
           <input id="descricao" type="text" className="form-control" />
         </div> 
         <hr />
@@ -53,12 +72,12 @@ function App() {
                       <span className="badge bg-secondary me-1">
                         {ativ.id}
                       </span>
-                       - titulo
+                       - {ativ.titulo}
                     </h5>
                     <h6>Prioridade: 
                       <span className="ms-1 text-black">
                         <i className="me-1 far fa-frown"></i>
-                        Alta
+                        {ativ.prioridade}
                       </span>                    
                     </h6>
                   </div>                
